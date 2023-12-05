@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('invitation_code')->unique();
             $table->string('name');
-            $table->string('phone_number')->unique();
+            $table->string('phone_number');
             $table->string('number_of_guests');
             $table->boolean('status')->default(false);
             $table->string('seat_side');
