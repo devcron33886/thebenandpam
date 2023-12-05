@@ -53,6 +53,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
-            ]);
+            ])
+            ->brandLogo(asset('assets/ben.jpeg'))
+            ->brandLogoHeight('44px');
     }
 }
