@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+
 use App\Filament\Resources\GuestResource\Pages;
 use App\Models\Guest;
 use Filament\Forms;
@@ -101,7 +102,7 @@ class GuestResource extends Resource
                         'Single' => 'Single',
                         'Couple' => 'Couple',
                     ])
-                    ->nullable()
+
                     ->default(null),
             ])
             ->actions([
