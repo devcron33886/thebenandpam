@@ -8,13 +8,15 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+
 
 class GuestResource extends Resource
 {
     protected static ?string $model = Guest::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {
@@ -37,6 +39,7 @@ class GuestResource extends Resource
                     ->required()
                     ->native(false),
                 Forms\Components\Toggle::make('status')
+                    ->label('Checked in?')
                     ->required(),
                 Forms\Components\Select::make('seat_side')
                     ->label('Seat side')
@@ -61,7 +64,8 @@ class GuestResource extends Resource
                 Tables\Columns\TextColumn::make('invitation_code')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('phone_number')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('number_of_guests')
@@ -73,7 +77,8 @@ class GuestResource extends Resource
                     ->boolean(),
                 Tables\Columns\TextColumn::make('seat_side')
                     ->label('Seat side')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('table_number')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -90,7 +95,14 @@ class GuestResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('number_of_guests')
+                    ->label('Guest type')
+                    ->options([
+                        'Single' => 'Single',
+                        'Couple' => 'Couple',
+                    ])
+                    ->nullable()
+                    ->default(null),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
