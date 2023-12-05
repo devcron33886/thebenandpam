@@ -4,8 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Filament\Panel;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +15,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable,SoftDeletes,HasRoles;
+    use HasApiTokens, HasFactory, HasRoles,Notifiable,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -52,5 +52,4 @@ class User extends Authenticatable implements FilamentUser
     {
         return str_ends_with($this->email, '@gmail.com');
     }
-   
 }

@@ -27,7 +27,7 @@ class GuestNotification extends Notification
     public function toAfricasTalking($notifiable)
     {
         return (new AfricasTalkingMessage())
-            ->content("The Ben & Pamella invite you to our traditional wedding on Dec 15 2023 at Jalia Garden at 14h00. Your presence would make this day more special. You'll use this code " . $this->guest->invitation_code . " for checkin.")
+            ->content("The Ben & Pamella invite you to our traditional wedding on Dec 15 2023 at Jalia Garden at 14h00. Your presence would make this day more special. You'll use this code ".$this->guest->invitation_code.' for checkin.')
             ->to($this->guest->phone_number);
     }
 }

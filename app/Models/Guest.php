@@ -9,8 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Guest extends Model
 {
-    use HasFactory, SoftDeletes,Notifiable;
-
+    use HasFactory, Notifiable,SoftDeletes;
 
     public function routeNotificationForAfricasTalking($notification)
     {

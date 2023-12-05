@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-
 use App\Filament\Resources\GuestResource\Pages;
 use App\Models\Guest;
 use Filament\Forms;
@@ -11,7 +10,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-
 
 class GuestResource extends Resource
 {
@@ -103,6 +101,20 @@ class GuestResource extends Resource
                         'Couple' => 'Couple',
                     ])
 
+                    ->default(null),
+                SelectFilter::make('status')
+                    ->label('Check-in status')
+                    ->options([
+                        '1' => 'Checked in',
+                        '0' => 'Not checked in',
+                    ])
+                    ->default(null),
+                SelectFilter::make('seat_side')
+                    ->label('Seat side')
+                    ->options([
+                        'Bride' => 'Bride',
+                        'Groom' => 'Groom',
+                    ])
                     ->default(null),
             ])
             ->actions([
