@@ -26,9 +26,9 @@ class GuestResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('phone_number')
-                    ->tel()
+                    ->unique()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(20),
                 Forms\Components\Select::make('number_of_guests')
                     ->label('Guest type')
                     ->options([
